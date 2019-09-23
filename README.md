@@ -42,4 +42,11 @@ struct Block_descriptor_3 {
 * Block_descriptor_2 BLOCK_HAS_COPY_DISPOSE
 * Block_descriptor_3 BLOCK_HAS_SIGNATURE
 
-### BlockInvokeFunction
+### 元类
+_NSConcreteStackBlock 
+
+_NSConcreteMallocBlock
+
+_NSConcreteGlobalBlock
+
+### 关于block_copy
