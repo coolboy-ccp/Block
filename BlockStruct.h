@@ -43,12 +43,20 @@ struct Block_descriptor_3 {
     const char *layout;     // contents depend on BLOCK_HAS_EXTENDED_LAYOUT
 };
 
+
 struct Block_layout {
     void *isa;
-    volatile int32_t flags; // contains ref count
+    volatile int32_t flags; // contains ref count, 决定block的description
     int32_t reserved;
-    BlockInvokeFunction invoke;
-    struct Block_descriptor_1 *descriptor;
+    BlockInvokeFunction invoke;// block中执行代码会封装成这个函数
+    struct Block_descriptor_1 *descriptor; //block的描述
     // imported variables
 };
+
+void * _NSConcreteStackBlock[32] = { 0 };//栈元类 在函数中定义时isa指针指向
+void * _NSConcreteMallocBlock[32] = { 0 };//如果block在函数返回后需要继续使用，block会被copy到堆中，isa指向
+void * _NSConcreteAutoBlock[32] = { 0 };
+void * _NSConcreteFinalizingBlock[32] = { 0 };
+void * _NSConcreteGlobalBlock[32] = { 0 };//在全局作用域中定义的block的isa指针指向
+void * _NSConcreteWeakBlockVariable[32] = { 0 };
 #endif /* BlockStruct_h */
