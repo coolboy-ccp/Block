@@ -12,6 +12,7 @@
 
 @property (nonatomic, copy) void(^ copyBlock)(void);
 @property (nonatomic, strong) void(^ strongBlock)(void);
+//weakBlock的作用域只在其定义的函数内，函数return后再次使用会导致野指针崩溃
 @property (nonatomic, weak) void(^ weakBlock)(void);
 - (void)test;
 - (void)printBlock;
@@ -35,8 +36,9 @@
     self.weakBlock();
 }
 
+//crash
 - (void)printBlock {
-    NSLog(@"copy: %@, strong: %@", self.copyBlock, self.strongBlock);
+    NSLog(@"copy: %@, strong: %@, weak: %@", self.copyBlock, self.strongBlock, self.weakBlock);
 }
 
 @end
