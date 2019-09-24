@@ -31,7 +31,7 @@ const，不可修改。 当block被copy后，block会对 id类型的变量产生
 * 定义全局block(目的就是让self不强引用block)
 
 ## __block
-默认block捕获到的变量，都是赋值给block的结构体的，相当于const不可改。为了让block能访问并修改外部变量，需要加上__block修饰词。[oc]()[cpp]()
+默认block捕获到的变量，都是赋值给block的结构体的，相当于const不可改。为了让block能访问并修改外部变量，需要加上__block修饰词。[oc](), [cpp]()
 __block会将被修饰的值的位置变成了一个struct（struct __Block_byref）。这个struct的首地址为同样为*isa。
 正是如此，这个值才能被block共享、并且不受栈帧生命周期的限制、在block被copy后，能够随着block复制到堆上。
 ## block内部修改外部变量的方法
