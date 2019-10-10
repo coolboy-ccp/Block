@@ -40,8 +40,8 @@ __block会将被修饰的值的位置变成了一个struct（struct __Block_byre
 ## 关于block作为属性时的修饰词ARC
 * 使用weak修饰的block生命周期在函数返回时结束，其isa指针指向__NSStackBlock__。在函数结束后，再次使用block时会出现野指针崩溃。
 * 使用copy,strong修饰的block的isa指向:
-   在block内部使用了当前对象时，__NSMallocBlock__
-   在block内部没有使用当前对象时，__NSGlobalBlock__
+   1. 在block内部使用了当前对象时，__NSMallocBlock__
+   2. 在block内部没有使用当前对象时，__NSGlobalBlock__
 * [property test](/propertyTest.m)
 
 
