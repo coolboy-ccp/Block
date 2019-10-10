@@ -37,12 +37,11 @@ __block会将被修饰的值的位置变成了一个struct（struct __Block_byre
 ## block内部修改外部变量的方法
 * __block修饰
 * 使用对象封装
-## 关于block作为属性时的修饰词ARC
-* 使用weak修饰的block生命周期在函数返回时结束，其isa指针指向__NSStackBlock__。在函数结束后，再次使用block时会出现野指针崩溃。
-* 使用copy,strong修饰的block的isa指向:
-   1. 在block内部使用了当前对象时，__NSMallocBlock__
-   2. 在block内部没有使用当前对象时，__NSGlobalBlock__
-* [property test](/propertyTest.m)
+## ARC block
+* 使用weak修饰的block, isa指向__NSStackBlock__。block的作用域在其定义的函数内.
+* 使用copy，strong修饰的block, 如果block内部使用了当前对象self，isa指向__NSMallocBlock__;如果未使用当前对象self，isa指向__NSGlobalBlock__
+* c函数中定义的block的isa指向__NSGlobalBlock__
+* [arc block test](/propertyTest.m)
 
 
 
